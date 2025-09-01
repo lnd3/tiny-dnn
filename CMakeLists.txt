@@ -367,8 +367,8 @@ configure_file(
     "${CMAKE_CURRENT_BINARY_DIR}/cmake-uninstall.cmake"
     IMMEDIATE @ONLY)
 
-add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake-uninstall.cmake)
+#add_custom_target(uninstall
+#    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake-uninstall.cmake)
 
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
