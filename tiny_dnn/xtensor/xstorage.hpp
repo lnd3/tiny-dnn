@@ -33,10 +33,10 @@ class uvector {
   using allocator_type = Allocator;
 
   using value_type      = typename allocator_type::value_type;
-  using reference       = typename allocator_type::reference;
-  using const_reference = typename allocator_type::const_reference;
-  using pointer         = typename allocator_type::pointer;
-  using const_pointer   = typename allocator_type::const_pointer;
+  using reference       = T&;
+  using const_reference = const T&;
+  using pointer         = T*;
+  using const_pointer   = const T*;
 
   using size_type       = typename allocator_type::size_type;
   using difference_type = typename allocator_type::difference_type;
@@ -249,7 +249,7 @@ inline uvector<T, A>::uvector(std::initializer_list<T> init,
 
 template <class T, class A>
 inline uvector<T, A>::~uvector() {
-  detail::safe_destroy_deallocate(m_allocator, p_begin, size());
+  detail::safe_destroy_deallocate<A>(m_allocator, p_begin, size());
   p_begin = nullptr;
   p_end   = nullptr;
 }

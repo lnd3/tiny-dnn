@@ -531,7 +531,7 @@ int z = a[0u].GetInt();				// This works too.
 private:
 	template <typename, typename>
 	friend class GenericDocument;
-
+	
 	enum {
 		kBool_Flag = 0x100,
 		kNumberFlag = 0x200,
@@ -545,15 +545,15 @@ private:
 
 		// Initial flags of different types.
 		kNull_Flag = kNull_Type,
-		kTrueFlag = kTrueType | kBool_Flag,
-		kFalseFlag = kFalseType | kBool_Flag,
-		kNumberIntFlag = kNumberType | kNumberFlag | kIntFlag | kInt64Flag,
-		kNumberUintFlag = kNumberType | kNumberFlag | kUintFlag | kUint64Flag | kInt64Flag,
-		kNumberInt64Flag = kNumberType | kNumberFlag | kInt64Flag,
-		kNumberUint64Flag = kNumberType | kNumberFlag | kUint64Flag,
-		kNumberDoubleFlag = kNumberType | kNumberFlag | kDoubleFlag,
-		kConstStringFlag = kStringType | kStringFlag,
-		kCopyStringFlag = kStringType | kStringFlag | kCopyFlag,
+		kTrueFlag = static_cast<int>(kTrueType) | static_cast<int>(kBool_Flag),
+		kFalseFlag = static_cast<int>(kFalseType) | static_cast<int>(kBool_Flag),
+		kNumberIntFlag = static_cast<int>(kNumberType) | static_cast<int>(kNumberFlag) | static_cast<int>(kIntFlag) | static_cast<int>(kInt64Flag),
+		kNumberUintFlag = static_cast<int>(kNumberType) | static_cast<int>(kNumberFlag) | static_cast<int>(kUintFlag) | static_cast<int>(kUint64Flag) | static_cast<int>(kInt64Flag),
+		kNumberInt64Flag = static_cast<int>(kNumberType) | static_cast<int>(kNumberFlag) | static_cast<int>(kInt64Flag),
+		kNumberUint64Flag = static_cast<int>(kNumberType) | static_cast<int>(kNumberFlag) | static_cast<int>(kUint64Flag),
+		kNumberDoubleFlag = static_cast<int>(kNumberType) | static_cast<int>(kNumberFlag) | static_cast<int>(kDoubleFlag),
+		kConstStringFlag = static_cast<int>(kStringType) | static_cast<int>(kStringFlag),
+		kCopyStringFlag = static_cast<int>(kStringType) | static_cast<int>(kStringFlag) | static_cast<int>(kCopyFlag),
 		kObjectFlag = kObjectType,
 		kArrayFlag = kArrayType,
 
